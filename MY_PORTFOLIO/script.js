@@ -69,3 +69,25 @@ function typeEffect() {
 
 // Initialize typing effect
 typeEffect();
+
+/* ===== INTERACTIVE COSMIC CURSOR ===== */
+
+const hero = document.querySelector("header");
+
+if (hero) {
+    hero.addEventListener("mousemove", (event) => {
+        const rect = hero.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        hero.style.setProperty("--mouse-x", `${x}px`);
+        hero.style.setProperty("--mouse-y", `${y}px`);
+
+        hero.classList.add("cursor-active");
+    });
+
+    hero.addEventListener("mouseleave", () => {
+        hero.classList.remove("cursor-active");
+    });
+}

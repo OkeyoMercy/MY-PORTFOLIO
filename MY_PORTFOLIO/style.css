@@ -45,8 +45,9 @@ nav {
     top: 20px;
     right: 4%;
     left: auto;
-    width: auto;
-    max-width: 92%;
+    width: fit-content;
+    max-width: 70%;
+    box-sizing: border-box;
     background: rgba(22, 36, 71, 0.96);
     padding: 0.9rem 2rem;
     z-index: 1000;
@@ -55,7 +56,6 @@ nav {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(12px);
 }
-
 nav ul {
     list-style: none;
     display: flex;
@@ -133,7 +133,7 @@ section {
 
 header {
     display: flex;
-    justify-content: center;
+  justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     padding: 100px 5% 50px;
@@ -148,22 +148,83 @@ header {
     overflow: hidden;
 }
 /* SUBTLE COSMIC SPARKLES */
+
+
+
+/* ===== INTERACTIVE HONEYCOMB CURSOR ===== */
+
 header::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-    opacity: 0.55;
-    background-image:
-        radial-gradient(circle, #ffffff 1px, transparent 1.5px),
-        radial-gradient(circle, #e5bd62 1px, transparent 1.5px),
-        radial-gradient(circle, #4da6ff 1px, transparent 1.5px);
-    background-size: 130px 150px, 190px 180px, 230px 210px;
-    background-position: 20px 30px, 70px 80px, 110px 40px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='30' viewBox='0 0 34 30'%3E%3Cpath d='M8.5 0H25.5L34 15 25.5 30H8.5L0 15Z' fill='none' stroke='%234da6ff' stroke-width='0.8'/%3E%3C/svg%3E");
+
+    background-size: 34px 30px;
+
+    -webkit-mask-image: radial-gradient(
+        circle 190px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        black 0%,
+        rgba(0,0,0,0.7) 45%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        circle 190px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        black 0%,
+        rgba(0,0,0,0.7) 45%,
+        transparent 100%
+    );
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
+
+header.cursor-active::before {
+    opacity: 0.85;
+}
+/* ===== DECORATIVE CORNER HONEYCOMBS ===== */
+
+/* ===== DECORATIVE CORNER HONEYCOMBS ===== */
+
+header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='30' viewBox='0 0 34 30'%3E%3Cpath d='M8.5 0H25.5L34 15 25.5 30H8.5L0 15Z' fill='none' stroke='%23D4A017' stroke-width='1'/%3E%3C/svg%3E");
+
+    background-size: 34px 30px;
+
+    -webkit-mask-image:
+        radial-gradient(ellipse 220px 220px at top left, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at top right, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at bottom left, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at bottom right, #000 0%, transparent 100%);
+
+    mask-image:
+        radial-gradient(ellipse 220px 220px at top left, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at top right, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at bottom left, #000 0%, transparent 100%),
+        radial-gradient(ellipse 220px 220px at bottom right, #000 0%, transparent 100%);
+
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+
+    opacity: 0.75;
+}
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
 header .hero {
     max-width: 850px;
-    margin: 80px auto 0;
+    margin: 20px auto 0;
 }
 
 header .hero h1 {
@@ -175,7 +236,7 @@ header .hero h1 {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     position: relative;
     display: inline-block;
-    transform: translateY(-70px);
+    transform: translate(-350px, -70px);
 }
 
 header .hero h1::after {
@@ -191,8 +252,8 @@ header .hero h1::after {
 header .hero p {
     font-size: 1.15rem;
     color: #e5e8ef;
-    margin: 1rem auto;
-    max-width: 700px;
+margin: 2.5rem auto 1rem;
+max-width: 700px;
 }
 
 header .hero .cta {
@@ -822,3 +883,35 @@ footer .social-links a:hover {
     background-color: #e67e22; /* Darker golden on hover */
 }
 
+
+/* ===== ASIMOVIAN TYPOGRAPHY ===== */
+
+header .hero h1 {
+    font-family: 'Asimovian', sans-serif;
+    font-weight: 400;
+    letter-spacing: 5px;
+}
+
+
+
+/* ===== LEFT BRAND CAPSULE ===== */
+
+.nav-brand {
+    position: fixed;
+    top: 20px;
+    left: 4%;
+    display: inline-block;
+    color: #e5bd62;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    background: rgba(22, 36, 71, 0.96);
+    border: 1px solid rgba(229, 189, 98, 0.4);
+    border-radius: 50px;
+    padding: 0.9rem 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    z-index: 1001;
+}
