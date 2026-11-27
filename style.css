@@ -938,3 +938,73 @@ header .hero h1 {
 .project-card a {
     color: #162447;
 }
+/* HOMEPAGE NAME FIX */
+header .hero .main-name {
+    display: block;
+    width: 100%;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 5px;
+margin: -20px auto 1rem;
+    color: #ffffff;
+    font-family: "Times New Roman", Times, serif;
+}
+
+@media (max-width: 600px) {
+    #home {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        position: relative;
+        clear: both;
+    }
+
+    #home img {
+        position: relative;
+        transform: none !important;
+        width: 220px;
+        height: 220px;
+        flex-shrink: 0;
+    }
+}
+/* FIX MOBILE HOMEPAGE LAYOUT */
+@media (max-width: 600px) {
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .hero {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #typing-effect {
+        display: inline-block;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    #home {
+        width: 100%;
+        margin-top: -20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #home img {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+    }
+}
